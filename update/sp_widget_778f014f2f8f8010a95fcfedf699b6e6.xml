@@ -11,13 +11,10 @@
 			noteID: c.data.noteID,
 			noteBody: c.data.note,
 			noteTitle: c.data.title
-		}).then(function(r) {	
-			for(var property in r){
-				console.log('r ' + property + ": " + r[property]);
-			}
-			//$rootScope.noteID = id;
-			//$rootScope.$emit('selectNote', id)
-
+		}).then(function(r) {			
+			$rootScope.noteID = c.data.noteID;
+			$rootScope.$emit('refreshNotes', c.data.noteID);
+			console.log($rootScope.noteID);
 		});
 	}
 
@@ -73,14 +70,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-02-23 03:36:11</sys_created_on>
         <sys_id>778f014f2f8f8010a95fcfedf699b6e6</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Notes Body</sys_name>
         <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
         <sys_policy/>
         <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
         <sys_update_name>sp_widget_778f014f2f8f8010a95fcfedf699b6e6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-02-23 07:48:27</sys_updated_on>
+        <sys_updated_on>2020-02-23 20:30:05</sys_updated_on>
         <template><![CDATA[<div class="panel panel-default" ng-show="c.data.noteID">
   <div class="panel-heading clearfix">
     <div class="row">
@@ -93,7 +90,7 @@
     <textarea class="form-control" id="note-body" ng-model="c.data.note" ng-change="c.updateNote('body')" ng-model-options="{debounce: 1000}" ></textarea>
   </div>
 </div>
-{{data|json}}
+
 ]]></template>
     </sp_widget>
 </record_update>
